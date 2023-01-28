@@ -5,16 +5,13 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  Image,
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  ModalFooter,
-  ListItem,
-  UnorderedList,
-  Grid,
+  ModalFooter
 } from "@chakra-ui/react";
 import getPokemon from "../Hooks/getPokemon";
+import PokemonDetails from "./pokemonDetails";
 
 interface Props {
   name: string;
@@ -49,30 +46,8 @@ const PokemonModalInfo = ({ name }: Props) => {
                 <span className="grid"> Height: {pokemon.height} Cm</span>
                 <span className="grid">Types: </span>
               </Text>
+            <PokemonDetails pokemon={pokemon}/>
 
-              <UnorderedList>
-                {pokemon.types.map(({ type }, i) => (
-                  <ListItem key={i}>{type.name}</ListItem>
-                ))}
-              </UnorderedList>
-              <Grid templateColumns="repeat(2, 1fr)">
-                <span>
-                  <Text textAlign="center">Normal</Text>
-                  <Image
-                    className="w-full h-full object-cover"
-                    src={pokemon.sprites.front_default}
-                    alt={pokemon.name}
-                  />
-                </span>
-                <span>
-                  <Text textAlign="center">Shiny</Text>
-                  <Image
-                    className="w-full h-full object-cover"
-                    src={pokemon.sprites.front_shiny}
-                    alt={pokemon.name}
-                  />
-                </span>
-              </Grid>
             </ModalBody>
 
             <ModalFooter>
