@@ -14,7 +14,7 @@ import {
   UnorderedList,
   Grid,
 } from "@chakra-ui/react";
-import getPokemon from "./Hooks/getPokemon";
+import getPokemon from "../Hooks/getPokemon";
 
 interface Props {
   name: string;

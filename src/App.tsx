@@ -1,18 +1,20 @@
 import axios from "axios";
-import PokemonDetail from "./PokemonDetail";
+import PokemonDetail from "./components/pokemonCard";
 import { Button, Grid } from "@chakra-ui/react";
 import getPokemonList from "./Hooks/getPokemonList";
+import { http } from "./Infrastructure/http";
+import PokemonResult from "./domain/models/pokemonResult";
 
 const PokemonList = () => {
   const { pokemonList, setPokemonList, nextUrl, setNextUrl } = getPokemonList();
 
   const handleLoadMore = async () => {
     if (nextUrl) {
-      const res = await axios.get(nextUrl);
-      setPokemonList([...pokemonList, ...res.data.results]);
-      setNextUrl(res.data.next);
+      const res = await http.get(nextUrl) as PokemonResult
+      setPokemonList([...pokemonList, ...res.results]);
+      setNextUrl(res.next);
     }
-  };
+  }
 
   return (
     <>

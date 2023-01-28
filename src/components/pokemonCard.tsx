@@ -1,4 +1,3 @@
-import PokemonModalInfo from "./PokemonModalInfo";
 import {
   Card,
   CardBody,
@@ -8,6 +7,8 @@ import {
   Image,
   Grid,
 } from "@chakra-ui/react";
+
+import PokemonModalInfo from "./PokemonModalInfo";
 
 interface Props {
   name: string;

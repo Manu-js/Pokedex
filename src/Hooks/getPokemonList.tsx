@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Pokemon from "../Pokemon";
+import Pokemon from "../domain/models/Pokemon";
+import PokemonResult from "../domain/models/pokemonResult";
+import { http } from "../Infrastructure/http";
 
 const getPokemonList = () => {
-    const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
-    const [nextUrl, setNextUrl] = useState(null);
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [nextUrl, setNextUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get("https://pokeapi.co/api/v2/pokemon");
-      setPokemonList(res.data.results);
-      setNextUrl(res.data.next);
+      const res = (await http.get(
+        "https://pokeapi.co/api/v2/pokemon"
+      )) as PokemonResult;
+      setPokemonList(res.results);
+      setNextUrl(res.next!);
     };
     fetchData();
   }, []);
