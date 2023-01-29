@@ -10,6 +10,8 @@ import {
   ModalBody,
   ModalFooter,
 } from "@chakra-ui/react";
+import { useState } from "react";
+import PokemonDetail from "../domain/models/PokemonDetail";
 import getPokemon from "../Hooks/getPokemon";
 import PokemonDetails from "./pokemonDetails";
 
@@ -17,10 +19,14 @@ interface Props {
   name: string;
 }
 
-const PokemonModalInfo = ({ name }: Props) => {
+const PokemonModal = ({ name }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { pokemon, isLoading } = getPokemon(name);
+  const { fetchData, isLoading } = getPokemon((pokemon) => {
+    setPokemon(pokemon);
+  });
+
+  const [pokemon, setPokemon] = useState<PokemonDetail>();
 
   return (
     <>
@@ -29,10 +35,15 @@ const PokemonModalInfo = ({ name }: Props) => {
         loadingText="Cargando"
         colorScheme="teal"
         variant="outline"
-        onClick={onOpen}
+        onClick={() => {
+          fetchData(name);
+          if (!isLoading) {
+            onOpen();
+          }
+        }}
         className="mb-2"
       >
-        Open for more details
+        More info
       </Button>
       {pokemon && (
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
@@ -55,4 +66,4 @@ const PokemonModalInfo = ({ name }: Props) => {
     </>
   );
 };
-export default PokemonModalInfo;
+export default PokemonModal;

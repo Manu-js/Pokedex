@@ -7,7 +7,7 @@ import {
   Image,
   Grid,
 } from "@chakra-ui/react";
-import PokemonModalInfo from "./pokemonModal";
+import PokemonModal from "./pokemonModal";
 
 
 interface Props {
@@ -32,7 +32,7 @@ const PokemonDetail = ({ name, url }: Props) => {
             <Heading size="md" className="capitalize capitalize">{name}</Heading>
           </CardBody>
           <CardFooter>
-            <PokemonModalInfo name={name} />
+            <PokemonModal name={name} />
           </CardFooter>
         </Stack>
       </Card>
