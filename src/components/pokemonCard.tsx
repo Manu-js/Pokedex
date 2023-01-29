@@ -29,7 +29,7 @@ const PokemonDetail = ({ name, url }: Props) => {
         />
         <Stack>
           <CardBody>
-            <Heading size="md" className="capitalize capitalize">{name}</Heading>
+            <Heading size="md" className="capitalize">{name}</Heading>
           </CardBody>
           <CardFooter>
             <PokemonModal name={name} />
