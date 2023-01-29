@@ -8,7 +8,7 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  ModalFooter
+  ModalFooter,
 } from "@chakra-ui/react";
 import getPokemon from "../Hooks/getPokemon";
 import PokemonDetails from "./pokemonDetails";
@@ -41,13 +41,7 @@ const PokemonModalInfo = ({ name }: Props) => {
             <ModalHeader>{pokemon.name}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Text fontWeight="bold" mb="1rem">
-                <span className="grid"> Weight: {pokemon.weight} Kg</span>
-                <span className="grid"> Height: {pokemon.height} Cm</span>
-                <span className="grid">Types: </span>
-              </Text>
-            <PokemonDetails pokemon={pokemon}/>
-
+              <PokemonDetails pokemon={pokemon} />
             </ModalBody>
 
             <ModalFooter>

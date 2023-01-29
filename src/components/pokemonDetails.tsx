@@ -9,17 +9,16 @@ interface Props {
 const PokemonDetails = ({ pokemon }: Props) => {
   return (
     <>
-      <Text fontWeight="bold" mb="1rem">
-        <span className="grid"> Weight: {pokemon.weight} Kg</span>
-        <span className="grid"> Height: {pokemon.height} Cm</span>
+      <Text fontWeight="bold">
+        <span className="grid">Weight: {pokemon.weight} Kg</span>
+        <span className="grid">Height: {pokemon.height} Cm</span>
         <span className="grid">Types: </span>
+        <UnorderedList>
+          {pokemon.types.map(({ type }, i) => (
+            <ListItem key={i}>{type.name}</ListItem>
+          ))}
+        </UnorderedList>
       </Text>
-
-      <UnorderedList>
-        {pokemon.types.map(({ type }, i) => (
-          <ListItem key={i}>{type.name}</ListItem>
-        ))}
-      </UnorderedList>
       <PokemonSprites pokemon={pokemon} />
     </>
   );

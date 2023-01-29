@@ -23,7 +23,7 @@ const PokemonList = () => {
       </h1>
       <Grid
         className="m-4"
-        templateColumns={{ base: "repeat(1, 1fr)", sm: "repeat(3, 1fr)" }}
+        templateColumns={{ base: "repeat(1, 1fr)", sm: "repeat(2, 1fr)", lg:"repeat(4, 1fr)" }}
         gap={3}
       >
         {pokemonList.map((pokemon, i) => (
