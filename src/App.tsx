@@ -1,15 +1,17 @@
 import { http } from "./Infrastructure/http";
-import { Button, Grid, Spinner } from "@chakra-ui/react";
-import { t } from "i18next";
+import { Grid, Spinner } from "@chakra-ui/react";
 import PokemonCard from "./components/pokemonCard";
 import getPokemonList from "./Hooks/getPokemonList";
 import PokemonResult from "./domain/models/pokemonResult";
 import i18n from "./config/i18n";
+import { useEffect, useRef } from "react";
 
 const PokemonList = () => {
+  /*Solicita los primeros 20 pokemon*/
   const { pokemonList, setPokemonList, nextUrl, setNextUrl, isLoading } =
     getPokemonList();
 
+  /*solicita otros 20 pokemon mas y setea el NextUrl (si hay)*/
   const handleLoadMore = async () => {
     if (nextUrl) {
       const res = (await http.getWithUrl(nextUrl)) as PokemonResult;
@@ -18,9 +20,30 @@ const PokemonList = () => {
     }
   };
 
+  /*Maneja el cambio de idioma*/
   const handleLanguageChange = (languageCode: string) => {
     i18n.changeLanguage(languageCode);
   };
+
+  /*Aquí tenemos el scroll infinito, una referencia a un DIV que es el que va a provocar que se vuelva pedir más Pokemons*/
+  const loadMoreRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && nextUrl) {
+          handleLoadMore();
+        }
+      },
+      { threshold: [1.0] } //Indica que llamará a handleLoadMore cuando esté completamente dentro del viewport (es)
+    );
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [handleLoadMore, nextUrl, loadMoreRef]);
 
   return (
     <>
@@ -51,12 +74,8 @@ const PokemonList = () => {
               <PokemonCard name={pokemon.name} url={pokemon.url} key={i} />
             ))}
           </Grid>
-          <div className="flex item-center justify-center p-5">
-            {nextUrl && (
-              <Button onClick={handleLoadMore}>
-                {t("interface.loadPokemons")}
-              </Button>
-            )}
+          <div ref={loadMoreRef}>
+            {nextUrl && isLoading ? <Spinner size="xl" /> : null}
           </div>
         </>
       )}
