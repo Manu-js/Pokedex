@@ -1,5 +1,5 @@
-import axios from "axios";
 import { BASE_URL } from '../config/config';
+import axios from "axios";
 
 const get = async <T = any>(url: string) => {
   try {

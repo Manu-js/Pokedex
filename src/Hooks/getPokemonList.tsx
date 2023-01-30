@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { http } from "../Infrastructure/http";
 import Pokemon from "../domain/models/pokemon";
 import PokemonResult from "../domain/models/pokemonResult";
-import { http } from "../Infrastructure/http";
 
 const getPokemonList = () => {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);

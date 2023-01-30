@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
 import "./index.css";
-
+  
 import { ChakraProvider } from "@chakra-ui/react";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./config/i18n";

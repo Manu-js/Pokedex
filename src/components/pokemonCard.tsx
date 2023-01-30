@@ -6,8 +6,8 @@ import {
   Stack,
   Image,
 } from "@chakra-ui/react";
-import PokemonModal from "./pokemonModal";
 import { SPRITE_URL } from "../config/config";
+import PokemonModal from "./pokemonModal";
 
 interface Props {
   name: string;

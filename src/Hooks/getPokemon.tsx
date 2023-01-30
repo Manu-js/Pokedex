@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PokemonDetail from "../domain/models/pokemonDetail";
 import { http } from "../Infrastructure/http";
+import PokemonDetail from "../domain/models/pokemonDetail";
 
 const getPokemon = (callback: (pokemon: PokemonDetail) => void) => {
   const [pokemon, setPokemon] = useState<PokemonDetail>();

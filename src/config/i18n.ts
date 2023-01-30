@@ -1,6 +1,6 @@
 // i18n.js
-import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import i18n from "i18next";
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -8,7 +8,8 @@ i18n.use(initReactI18next).init({
       translation: {
         "interface":{
             info: "More info",
-            close: "Close"
+            close: "Close",
+            loadPokemons: "Load More"
         },
         "pokemon-detail": {
           height: "Height",
@@ -27,6 +28,7 @@ i18n.use(initReactI18next).init({
             info: "Más información",
             close: "Cerrar"
         },
+        loadPokemons: "Cargar más",
         "pokemon-detail": {
           weight: "Peso",
           height: "Altura",

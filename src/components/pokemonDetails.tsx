@@ -1,7 +1,7 @@
-import PokemonDetail from "../domain/models/pokemonDetail";
 import { ListItem, Text, UnorderedList } from "@chakra-ui/react";
-import PokemonSprites from "./pokemonSprites";
 import { useTranslation } from "react-i18next";
+import PokemonDetail from "../domain/models/pokemonDetail";
+import PokemonSprites from "./pokemonSprites";
 
 interface Props {
   pokemon: PokemonDetail;
