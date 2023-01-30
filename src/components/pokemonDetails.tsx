@@ -13,12 +13,12 @@ const PokemonDetails = ({ pokemon }: Props) => {
         <span className="grid">Weight: {pokemon.weight} Kg</span>
         <span className="grid">Height: {pokemon.height} Cm</span>
         <span className="grid">Types: </span>
-        <UnorderedList>
+      </Text>
+      <UnorderedList>
           {pokemon.types.map(({ type }, i) => (
             <ListItem key={i}>{type.name}</ListItem>
           ))}
         </UnorderedList>
-      </Text>
       <PokemonSprites pokemon={pokemon} />
     </>
   );
