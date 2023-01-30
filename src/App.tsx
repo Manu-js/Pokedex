@@ -1,10 +1,11 @@
 import { http } from "./Infrastructure/http";
-import { Grid, Spinner } from "@chakra-ui/react";
+import { Button, Grid, Spinner } from "@chakra-ui/react";
 import PokemonCard from "./components/pokemonCard";
 import getPokemonList from "./Hooks/getPokemonList";
 import PokemonResult from "./domain/models/pokemonResult";
 import i18n from "./config/i18n";
 import { useEffect, useRef } from "react";
+import LanguageSelector from "./components/languageSwitcher";
 
 const PokemonList = () => {
   /*Solicita los primeros 20 pokemon*/
@@ -18,11 +19,6 @@ const PokemonList = () => {
       setPokemonList([...pokemonList, ...res.results]);
       setNextUrl(res.next);
     }
-  };
-
-  /*Maneja el cambio de idioma*/
-  const handleLanguageChange = (languageCode: string) => {
-    i18n.changeLanguage(languageCode);
   };
 
   /*Aquí tenemos el scroll infinito, una referencia a un DIV que es el que va a provocar que se vuelva pedir más Pokemons*/
@@ -50,10 +46,7 @@ const PokemonList = () => {
       <h1 className="my-custom-button text-3xl font-bold text-center mt-5 mb-7">
         ManuDex
       </h1>
-      <div>
-        <button onClick={() => handleLanguageChange("es")}>Español</button>
-        <button onClick={() => handleLanguageChange("en")}>English</button>
-      </div>
+      <LanguageSelector />
 
       {isLoading ? (
         <div className="flex items-center justify-center h-full">
