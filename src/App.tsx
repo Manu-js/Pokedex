@@ -1,4 +1,4 @@
-import PokemonDetail from "./components/pokemonCard";
+import PokemonCard from "./components/pokemonCard";
 import { Button, Grid, Spinner } from "@chakra-ui/react";
 import getPokemonList from "./Hooks/getPokemonList";
 import { http } from "./Infrastructure/http";
@@ -27,9 +27,8 @@ const PokemonList = () => {
         Pokedex
       </h1>
       <div>
-        {/* Aquí está tu componente PokemonList */}
         <button onClick={() => handleLanguageChange("es")}>Español</button>
-        <button onClick={() => handleLanguageChange("en")}>Inglés</button>
+        <button onClick={() => handleLanguageChange("en")}>English</button>
       </div>
 
       {isLoading ? (
@@ -48,7 +47,7 @@ const PokemonList = () => {
             gap={3}
           >
             {pokemonList.map((pokemon, i) => (
-              <PokemonDetail name={pokemon.name} url={pokemon.url} key={i} />
+              <PokemonCard name={pokemon.name} url={pokemon.url} key={i} />
             ))}
           </Grid>
           <div className="flex item-center justify-center p-5">

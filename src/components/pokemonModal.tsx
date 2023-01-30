@@ -1,5 +1,4 @@
 import {
-  Text,
   useDisclosure,
   Button,
   Modal,

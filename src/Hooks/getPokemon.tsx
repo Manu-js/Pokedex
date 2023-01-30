@@ -8,13 +8,10 @@ const getPokemon = (callback: (pokemon: PokemonDetail) => void) => {
 
   const fetchData = async (name: string) => {
     setLoading(true);
-    const res = (await http.get(
-      `pokemon/${name}`
-    )) as PokemonDetail;
+    const res = (await http.get(`pokemon/${name}`)) as PokemonDetail;
     setPokemon(res);
     setLoading(false);
     callback(res);
-    setLoading(false);
   };
 
   return { fetchData, pokemon, isLoading };
