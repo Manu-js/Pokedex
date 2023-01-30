@@ -3,7 +3,6 @@ import { Button, Grid, Spinner } from "@chakra-ui/react";
 import getPokemonList from "./Hooks/getPokemonList";
 import { http } from "./Infrastructure/http";
 import PokemonResult from "./domain/models/pokemonResult";
-import { useState } from "react";
 
 const PokemonList = () => {
   const { pokemonList, setPokemonList, nextUrl, setNextUrl, isLoading } =

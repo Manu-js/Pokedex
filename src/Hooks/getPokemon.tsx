@@ -9,7 +9,7 @@ const getPokemon = (callback: (pokemon: PokemonDetail) => void) => {
   const fetchData = async (name: string) => {
     setLoading(true);
     const res = (await http.get(
-      `https://pokeapi.co/api/v2/pokemon/${name}`
+      `pokemon/${name}`
     )) as PokemonDetail;
     setPokemon(res);
     setLoading(false);

@@ -12,7 +12,7 @@ const getPokemonList = () => {
     const fetchData = async () => {
       setIsLoading(true)
       const res = (await http.get(
-        "https://pokeapi.co/api/v2/pokemon"
+        "pokemon"
       )) as PokemonResult;
 
       setPokemonList(res.results);
