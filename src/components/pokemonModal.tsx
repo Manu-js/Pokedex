@@ -11,7 +11,7 @@ import {
   ModalFooter,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import PokemonDetail from "../domain/models/PokemonDetail";
+import PokemonDetail from "../domain/models/pokemonDetail";
 import getPokemon from "../Hooks/getPokemon";
 import PokemonDetails from "./pokemonDetails";
 
@@ -32,15 +32,13 @@ const PokemonModal = ({ name }: Props) => {
     <>
       <Button
         isLoading={isLoading}
-        loadingText="Cargando"
+        loadingText="Loading"
         colorScheme="teal"
         variant="outline"
-        onClick={() => {
-          fetchData(name);
-          if (!isLoading) {
-            onOpen();
-          }
-        }}
+        onClick={async () => {
+            await fetchData(name);
+            onOpen(); 
+      }}
         className="mb-2"
       >
         More info

@@ -1,5 +1,5 @@
 import { Grid, Text, Image } from "@chakra-ui/react";
-import PokemonDetail from "../domain/models/PokemonDetail";
+import PokemonDetail from "../domain/models/pokemonDetail";
 
 
 interface Props {

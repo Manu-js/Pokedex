@@ -5,7 +5,6 @@ import {
   Heading,
   Stack,
   Image,
-  Grid,
 } from "@chakra-ui/react";
 import PokemonModal from "./pokemonModal";
 

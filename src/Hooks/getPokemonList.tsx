@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Pokemon from "../domain/models/Pokemon";
+import Pokemon from "../domain/models/pokemon";
 import PokemonResult from "../domain/models/pokemonResult";
 import { http } from "../Infrastructure/http";
 
@@ -10,17 +10,14 @@ const getPokemonList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
-      const res = (await new Promise((resolve) =>
-        setTimeout(
-          () => resolve(http.get("https://pokeapi.co/api/v2/pokemon")),
-          500
-        )
+      setIsLoading(true)
+      const res = (await http.get(
+        "https://pokeapi.co/api/v2/pokemon"
       )) as PokemonResult;
 
       setPokemonList(res.results);
-      setNextUrl(res.next!);
-      setIsLoading(false);
+      setNextUrl(res.next);
+      setIsLoading(false)
     };
     fetchData();
   }, []);

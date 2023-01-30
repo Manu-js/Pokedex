@@ -1,4 +1,4 @@
-import PokemonDetail from "../domain/models/PokemonDetail";
+import PokemonDetail from "../domain/models/pokemonDetail";
 import { ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import PokemonSprites from "./pokemonSprites";
 

@@ -1,10 +1,15 @@
 import axios from "axios";
 
-const get = async <T>(url: string) => {
-  const response = await axios.get<T>(url)
-  return response.data
-}
+const get = async <T = any>(url: string) => {
+  try {
+    const response = await axios.get<T>(url);
+    return response.data;
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+};
 
 export const http = {
   get,
-}
+};
