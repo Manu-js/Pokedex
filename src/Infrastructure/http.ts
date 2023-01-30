@@ -1,4 +1,4 @@
-import { BASE_URL } from '../config/config';
+import { BASE_URL } from "../config/config";
 import axios from "axios";
 
 const get = async <T = any>(url: string) => {
@@ -6,8 +6,8 @@ const get = async <T = any>(url: string) => {
     const response = await axios.get<T>(`${BASE_URL}${url}`);
     return response.data;
   } catch (error) {
-    console.log(error)
-    return error
+    console.log(error);
+    return error;
   }
 };
 
@@ -16,11 +16,12 @@ const getWithUrl = async <T = any>(url: string) => {
     const response = await axios.get<T>(`${url}`);
     return response.data;
   } catch (error) {
-    console.log(error)
-    return error
+    console.log(error);
+    return error;
   }
 };
 
 export const http = {
-  get, getWithUrl
+  get,
+  getWithUrl,
 };

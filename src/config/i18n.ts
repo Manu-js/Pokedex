@@ -6,12 +6,12 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       translation: {
-        "interface":{
-            info: "More info",
-            close: "Close",
-            loadPokemons: "Load More",
-            changeLanguage: "Change Configuration",
-            chooseLanguage: "Choose language",
+        interface: {
+          info: "More info",
+          close: "Close",
+          loadPokemons: "Load More",
+          changeLanguage: "Change Configuration",
+          chooseLanguage: "Choose language",
         },
         "pokemon-detail": {
           height: "Height",
@@ -26,12 +26,12 @@ i18n.use(initReactI18next).init({
     },
     es: {
       translation: {
-        "interface":{
-            info: "Más información",
-            close: "Cerrar",
-            loadPokemons: "Cargar más",
-            changeLanguage: "Cambiar idioma",
-            chooseLanguage: "Elige el idioma",
+        interface: {
+          info: "Más información",
+          close: "Cerrar",
+          loadPokemons: "Cargar más",
+          changeLanguage: "Cambiar idioma",
+          chooseLanguage: "Elige el idioma",
         },
         "pokemon-detail": {
           weight: "Peso",

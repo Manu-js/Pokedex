@@ -10,14 +10,11 @@ const getPokemonList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
-      const res = (await http.get(
-        "pokemon"
-      )) as PokemonResult;
-
+      setIsLoading(true);
+      const res = (await http.get("pokemon")) as PokemonResult;
       setPokemonList(res.results);
       setNextUrl(res.next);
-      setIsLoading(false)
+      setIsLoading(false);
     };
     fetchData();
   }, []);

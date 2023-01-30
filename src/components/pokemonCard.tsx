@@ -19,9 +19,7 @@ const PokemonCard = ({ name, url }: Props) => {
     <Card variant="outline">
       <Image
         objectFit="contain"
-        src={`${SPRITE_URL}${
-          url.split("/")[url.split("/").length - 2]
-        }.png`}
+        src={`${SPRITE_URL}${url.split("/")[url.split("/").length - 2]}.png`}
         alt={name}
       />
       <Stack>
