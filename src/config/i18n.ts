@@ -28,11 +28,11 @@ i18n.use(initReactI18next).init({
       translation: {
         "interface":{
             info: "Más información",
-            close: "Cerrar"
+            close: "Cerrar",
+            loadPokemons: "Cargar más",
+            changeLanguage: "Cambiar idioma",
+            chooseLanguage: "Elige el idioma",
         },
-        loadPokemons: "Cargar más",
-        changeLanguage: "Cambiar idioma",
-        chooseLanguage: "Elige el idioma",
         "pokemon-detail": {
           weight: "Peso",
           height: "Altura",
