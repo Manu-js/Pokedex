@@ -1,8 +1,19 @@
 import axios from "axios";
+import { BASE_URL } from './config';
 
 const get = async <T = any>(url: string) => {
   try {
-    const response = await axios.get<T>('https://pokeapi.co/api/v2/'+url);
+    const response = await axios.get<T>(`${BASE_URL}${url}`);
+    return response.data;
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+};
+
+const getWithUrl = async <T = any>(url: string) => {
+  try {
+    const response = await axios.get<T>(`${url}`);
     return response.data;
   } catch (error) {
     console.log(error)
@@ -11,5 +22,5 @@ const get = async <T = any>(url: string) => {
 };
 
 export const http = {
-  get,
+  get, getWithUrl
 };

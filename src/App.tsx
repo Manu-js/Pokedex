@@ -10,7 +10,7 @@ const PokemonList = () => {
 
   const handleLoadMore = async () => {
     if (nextUrl) {
-      const res = (await http.get(nextUrl)) as PokemonResult;
+      const res = (await http.getWithUrl(nextUrl)) as PokemonResult;
       setPokemonList([...pokemonList, ...res.results]);
       setNextUrl(res.next);
     }
