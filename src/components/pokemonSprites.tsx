@@ -1,4 +1,5 @@
 import { Grid, Text, Image } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import PokemonDetail from "../domain/models/pokemonDetail";
 
 
@@ -7,10 +8,12 @@ interface Props {
 }
 
 const PokemonSprites = ({ pokemon }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <Grid templateColumns="repeat(2, 1fr)">
       <span>
-        <Text textAlign="center">Normal</Text>
+        <Text textAlign="center">{t('pokemon-detail.sprite.normal')}</Text>
         <Image
           className="w-full h-full object-cover"
           src={pokemon.sprites.front_default}
@@ -18,7 +21,7 @@ const PokemonSprites = ({ pokemon }: Props) => {
         />
       </span>
       <span>
-        <Text textAlign="center">Shiny</Text>
+        <Text textAlign="center">{t('pokemon-detail.sprite.shiny')}</Text>
         <Image
           className="w-full h-full object-cover"
           src={pokemon.sprites.front_shiny}

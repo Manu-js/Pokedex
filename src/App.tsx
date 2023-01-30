@@ -3,6 +3,7 @@ import { Button, Grid, Spinner } from "@chakra-ui/react";
 import getPokemonList from "./Hooks/getPokemonList";
 import { http } from "./Infrastructure/http";
 import PokemonResult from "./domain/models/pokemonResult";
+import i18n from "./config/i18n";
 
 const PokemonList = () => {
   const { pokemonList, setPokemonList, nextUrl, setNextUrl, isLoading } =
@@ -16,11 +17,21 @@ const PokemonList = () => {
     }
   };
 
+  const handleLanguageChange = (languageCode: string) => {
+    i18n.changeLanguage(languageCode);
+  };
+
   return (
     <>
       <h1 className="my-custom-button text-3xl font-bold text-center mt-5 mb-7">
         Pokedex
       </h1>
+      <div>
+        {/* Aquí está tu componente PokemonList */}
+        <button onClick={() => handleLanguageChange("es")}>Español</button>
+        <button onClick={() => handleLanguageChange("en")}>Inglés</button>
+      </div>
+
       {isLoading ? (
         <div className="flex items-center justify-center h-full">
           <Spinner size="xl" />

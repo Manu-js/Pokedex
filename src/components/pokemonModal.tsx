@@ -11,6 +11,7 @@ import {
   ModalFooter,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import PokemonDetail from "../domain/models/pokemonDetail";
 import getPokemon from "../Hooks/getPokemon";
 import PokemonDetails from "./pokemonDetails";
@@ -27,6 +28,7 @@ const PokemonModal = ({ name }: Props) => {
   });
 
   const [pokemon, setPokemon] = useState<PokemonDetail>();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -36,12 +38,12 @@ const PokemonModal = ({ name }: Props) => {
         colorScheme="teal"
         variant="outline"
         onClick={async () => {
-            await fetchData(name);
-            onOpen(); 
-      }}
+          await fetchData(name);
+          onOpen();
+        }}
         className="mb-2"
       >
-        More info
+        {t("interface.info")}
       </Button>
       {pokemon && (
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
@@ -55,7 +57,7 @@ const PokemonModal = ({ name }: Props) => {
 
             <ModalFooter>
               <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
+                {t("interface.close")}
               </Button>
             </ModalFooter>
           </ModalContent>
