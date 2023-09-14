@@ -9,17 +9,8 @@ import LanguageSelector from "./components/languageSwitcher";
 
 const PokemonList = () => {
   /*Solicita los primeros 20 pokemon*/
-  const { pokemonList, setPokemonList, nextUrl, setNextUrl, isLoading } =
+  const { pokemonList, nextUrl, handleLoadMore } =
     getPokemonList();
-
-  /*solicita otros 20 pokemon mas y setea el NextUrl (si hay)*/
-  const handleLoadMore = async () => {
-    if (nextUrl) {
-      const res = (await http.getWithUrl(nextUrl)) as PokemonResult;
-      setPokemonList([...pokemonList, ...res.results]);
-      setNextUrl(res.next);
-    }
-  };
 
   /*Aquí tenemos el scroll infinito, una referencia a un DIV que es el que va a provocar que se vuelva pedir más Pokemons*/
   const loadMoreRef = useRef(null);
@@ -48,7 +39,7 @@ const PokemonList = () => {
       </h1>
       <LanguageSelector />
 
-      {isLoading ? (
+      {!pokemonList?.length ? (
         <div className="flex items-center justify-center h-full">
           <Spinner size="xl" />
         </div>
@@ -56,7 +47,7 @@ const PokemonList = () => {
         <>
           <Grid
             className="m-4"
-            templateColumns={{
+            gridTemplateColumns={{
               base: "repeat(1, 1fr)",
               sm: "repeat(2, 1fr)",
               lg: "repeat(4, 1fr)",
@@ -68,7 +59,7 @@ const PokemonList = () => {
             ))}
           </Grid>
           <div ref={loadMoreRef}>
-            {nextUrl && isLoading ? <Spinner size="xl" /> : null}
+            {nextUrl && !pokemonList?.length ? <Spinner size="xl" /> : null}
           </div>
         </>
       )}
